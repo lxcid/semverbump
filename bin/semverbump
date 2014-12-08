@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require 'dotenv'
+Dotenv.load
+
+$:.push File.expand_path('../../lib', __FILE__)
+require 'semverbump'
+
+HighLine.track_eof = false # Fix for built-in Ruby
+
+program :version, SemVerBump::VERSION
+program :description, 'Bumping Sematic Versioning 2.0.0.'
+
+program :help, 'Author', 'Stan Chang Khin Boon <me@lxcid.com>'
+program :help, 'Website', 'http://github.com/lxcid/semverbump'
+program :help_formatter, :compact
+
+global_option('--verbose') { $verbose = true }
+
+default_command :help
+
+#require 'semverbump/commands'
